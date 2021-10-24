@@ -13,8 +13,8 @@ public interface UserEndPoint {
 
     String GETALL = "all";
 
-    String UPDATE = "update/{id}";
+    String UPDATE = "update/{id}/";
 
-    String DELETE = "delete/{id}";
+    String DELETE = "delete/{id}/";
 
 }
