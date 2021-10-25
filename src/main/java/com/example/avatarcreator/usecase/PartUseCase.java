@@ -13,4 +13,5 @@ public interface PartUseCase {
     void delete(Long id);
 
     List<Category> getAll();
+
 }

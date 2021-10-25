@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Table(name = "userAvatars")
 public class UserAvatar {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)

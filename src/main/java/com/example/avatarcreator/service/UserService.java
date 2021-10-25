@@ -1,5 +1,6 @@
 package com.example.avatarcreator.service;
 
+import com.example.avatarcreator.dto.LoginDto;
 import com.example.avatarcreator.dto.UserDto;
 import com.example.avatarcreator.entity.User;
 import com.example.avatarcreator.repository.UserRepository;
@@ -41,6 +42,11 @@ public class UserService implements UserUseCase {
     @Override
     public List<User> getAll() {
         return this.userRepository.findAll();
+    }
+
+    @Override
+    public User login(LoginDto login) {
+        return this.userRepository.findByUserNameAndPassword(login.getUserName(), login.getPassword());
     }
 
     public User mapDtoToEntity(UserDto dto){

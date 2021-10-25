@@ -1,5 +1,6 @@
 package com.example.avatarcreator.usecase;
 
+import com.example.avatarcreator.dto.LoginDto;
 import com.example.avatarcreator.dto.UserDto;
 import com.example.avatarcreator.entity.User;
 
@@ -14,4 +15,6 @@ public interface UserUseCase {
     void delete(Long id);
 
     List<User> getAll();
+
+    User login(LoginDto login);
 }

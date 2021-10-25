@@ -1,9 +1,11 @@
 package com.example.avatarcreator.controller;
 
+import com.example.avatarcreator.dto.FeatureDto;
 import com.example.avatarcreator.endpoint.FeatureEndPoint;
 import com.example.avatarcreator.entity.Feature;
 import com.example.avatarcreator.usecase.FeatureUseCase;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,7 +18,7 @@ import static org.springframework.http.ResponseEntity.ok;
 @Slf4j
 @RequestMapping(path = FeatureEndPoint.BASE)
 public class FeatureController implements FeatureEndPoint {
-
+    @Autowired
     private FeatureUseCase featureUseCase;
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -55,11 +57,11 @@ public class FeatureController implements FeatureEndPoint {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping(GETALL)
+//    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(value = GETALL)
     ResponseEntity getAll(){
         try {
-            List<Feature> feat =  this.featureUseCase.getAll();
+            List<FeatureDto> feat =  this.featureUseCase.getAll();
             return ok(feat);
         } catch (Exception e) {
             System.out.println("Ocurrio un error al obtener el listado de features: [{}]\n" + e.getMessage());

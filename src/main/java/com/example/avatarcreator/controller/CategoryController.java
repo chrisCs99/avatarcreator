@@ -4,6 +4,7 @@ import com.example.avatarcreator.endpoint.CategoryEndPoint;
 import com.example.avatarcreator.entity.Category;
 import com.example.avatarcreator.usecase.CategoryUseCase;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ import static org.springframework.http.ResponseEntity.ok;
 @Slf4j
 @RequestMapping(path = CategoryEndPoint.BASE)
 public class CategoryController {
-
+    @Autowired
     private CategoryUseCase categoryUseCase;
 
     @CrossOrigin(origins = "http://localhost:4200")

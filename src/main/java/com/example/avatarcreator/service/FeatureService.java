@@ -1,5 +1,6 @@
 package com.example.avatarcreator.service;
 
+import com.example.avatarcreator.dto.FeatureDto;
 import com.example.avatarcreator.dto.UserDto;
 import com.example.avatarcreator.entity.Category;
 import com.example.avatarcreator.entity.Feature;
@@ -18,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.http.ResponseEntity.ok;
@@ -74,8 +76,20 @@ public class FeatureService implements FeatureUseCase {
     }
 
     @Override
-    public List<Feature> getAll() throws Exception {
-        return this.featureRepository.findAll();
+    public List<FeatureDto> getAll() throws Exception {
+        List<Feature> features =  this.featureRepository.findAll();
+        List<FeatureDto> dto = new ArrayList<>();
+        features.forEach(e -> {
+            FeatureDto f = new FeatureDto();
+            f.setCategory(e.getCategory().getId());
+            f.setId(e.getId());
+            f.setImagePath(e.getImagePath());
+            f.setName(e.getName());
+
+            dto.add(f);
+        });
+
+        return dto;
     }
 
 }

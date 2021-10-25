@@ -17,4 +17,6 @@ public interface UserEndPoint {
 
     String DELETE = "delete/{id}/";
 
+    String LOGIN = "loginusr";
+
 }
