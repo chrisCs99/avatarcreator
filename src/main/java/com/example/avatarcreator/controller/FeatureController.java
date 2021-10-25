@@ -6,6 +6,7 @@ import com.example.avatarcreator.entity.Feature;
 import com.example.avatarcreator.usecase.FeatureUseCase;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,10 +27,10 @@ public class FeatureController implements FeatureEndPoint {
     ResponseEntity register(@RequestBody MultipartFile imageFile, @RequestParam String name, @RequestParam Long categoryId){
         try {
             this.featureUseCase.register(imageFile, name, categoryId);
-            return ok("Registro Exitoso");
+            return new ResponseEntity("Registro Exitoso", HttpStatus.OK);
         } catch (Exception e) {
             System.out.println("Ocurrio un error al registrar el feature: [{}]\n" + e.getMessage());
-            return  ok("Bad Request" + e.getMessage());
+            return new ResponseEntity("Bad Request" + e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 

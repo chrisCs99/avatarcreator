@@ -77,7 +77,7 @@ public class UserController implements UserEndPoint {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(DELETE)
-    ResponseEntity update(@PathVariable Long id){
+    ResponseEntity delete(@PathVariable Long id){
         try {
             this.userUseCase.delete(id);
             return ok("Eliminación Exitosa");
